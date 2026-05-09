@@ -1,0 +1,7 @@
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.csprojAssemblyReference.cache
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.csproj.CoreCompileInputs.cache
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\bin\Debug\csharp-exercises.exe.config
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\bin\Debug\csharp-exercises.exe
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\bin\Debug\csharp-exercises.pdb
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.exe
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.pdb
