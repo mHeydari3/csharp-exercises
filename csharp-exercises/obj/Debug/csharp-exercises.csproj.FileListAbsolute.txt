@@ -5,3 +5,5 @@ C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\bin\Debug\csh
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\bin\Debug\csharp-exercises.pdb
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.exe
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.pdb
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises.FirstApp__HelloWorld.resources
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.csproj.GenerateResource.cache

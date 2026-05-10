@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FD815818-C991-489B-ADDC-99AC3C3C9CD6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>csharp_exercises</RootNamespace>
     <AssemblyName>csharp-exercises</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
@@ -32,9 +32,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,12 +52,22 @@
     <Compile Include="01_GradeManager\Program.cs" />
     <Compile Include="02_BankAccount\BankAccount.cs" />
     <Compile Include="02_BankAccount\Program.cs" />
+    <Compile Include="03_WindowsFormApp\FirstApp__HelloWorld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_WindowsFormApp\FirstApp__HelloWorld.Designer.cs">
+      <DependentUpon>FirstApp__HelloWorld.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="03_WindowsFormApp\FirstApp__HelloWorld.resx">
+      <DependentUpon>FirstApp__HelloWorld.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
