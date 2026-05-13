@@ -58,6 +58,14 @@
     <Compile Include="03_WindowsFormApp\FirstApp__HelloWorld.Designer.cs">
       <DependentUpon>FirstApp__HelloWorld.cs</DependentUpon>
     </Compile>
+    <Compile Include="04_CalculatorApp\Calculate.cs" />
+    <Compile Include="04_CalculatorApp\CalculatorMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04_CalculatorApp\CalculatorMainForm.Designer.cs">
+      <DependentUpon>CalculatorMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04_CalculatorApp\ICalculate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="03_WindowsFormApp\FirstApp__HelloWorld.resx">
       <DependentUpon>FirstApp__HelloWorld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04_CalculatorApp\CalculatorMainForm.resx">
+      <DependentUpon>CalculatorMainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

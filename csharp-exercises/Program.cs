@@ -1,4 +1,5 @@
-﻿using System;
+﻿using csharp_exercises._04_CalculatorApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,10 @@ namespace csharp_exercises
 
             // اجرای فرم شما (به جای کد کنسولی قبلی)
             // توجه: مطمئن شوید نام کلاس فرم شما دقیقا FirstApp است
-            Application.Run(new FirstApp__HelloWorld());
+            Application.Run(new CalculatorMainForm());
+            
         }
+
+
     }
 }

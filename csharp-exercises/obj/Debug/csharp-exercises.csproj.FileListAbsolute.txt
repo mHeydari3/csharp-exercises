@@ -7,3 +7,4 @@ C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csh
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.pdb
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises.FirstApp__HelloWorld.resources
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.csproj.GenerateResource.cache
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises._04_CalculatorApp.CalculatorMainForm.resources
