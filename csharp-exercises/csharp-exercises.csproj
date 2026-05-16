@@ -66,6 +66,14 @@
       <DependentUpon>CalculatorMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="04_CalculatorApp\ICalculate.cs" />
+    <Compile Include="05_MyContacts\MyContactsMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="05_MyContacts\MyContactsMainForm.Designer.cs">
+      <DependentUpon>MyContactsMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="05_MyContacts\Repository\IContactsRepository.cs" />
+    <Compile Include="05_MyContacts\Services\ContactsRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="04_CalculatorApp\CalculatorMainForm.resx">
       <DependentUpon>CalculatorMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="05_MyContacts\MyContactsMainForm.resx">
+      <DependentUpon>MyContactsMainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

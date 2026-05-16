@@ -24,8 +24,10 @@ namespace csharp_exercises
 
             // اجرای فرم شما (به جای کد کنسولی قبلی)
             // توجه: مطمئن شوید نام کلاس فرم شما دقیقا FirstApp است
-            Application.Run(new CalculatorMainForm());
-            
+            //Application.Run(new CalculatorMainForm());
+
+
+            Application.Run(new _05_MyContacts.MyContactsMainForm());
         }
 
 
