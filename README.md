@@ -213,7 +213,10 @@ This project is for educational purposes and is distributed under the MIT Licens
 **MIT License** - Copyright (c) 2026 Mohammad Heydari
 
 <div align="center">
+<br/>
 ✨ Learning in public, growing together ✨
-[🔗 View Repository on GitHub](https://github.com/mHeydari3/csharp-exercises)
+<br/>
+<a href="https://github.com/mHeydari3/csharp-exercises">🔗 View Repository on GitHub </a>
+<br/>
 </div>
 
