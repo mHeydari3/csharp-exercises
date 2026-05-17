@@ -66,7 +66,7 @@ csharp-exercises/
 ├── App.config                # Configuration (Connection Strings if needed)
 ├── csharp-exercises.csproj
 └── csharp-exercises.sln
-
+```
 > ⚠️ **Note:** The `bin/` and `obj/` folders contain build artifacts and are excluded from version control via `.gitignore`.
 
 ## ▶️ How to Run
@@ -216,4 +216,4 @@ This project is for educational purposes and is distributed under the MIT Licens
 ✨ Learning in public, growing together ✨
 [🔗 View Repository on GitHub](https://github.com/mHeydari3/csharp-exercises)
 </div>
-```
+
