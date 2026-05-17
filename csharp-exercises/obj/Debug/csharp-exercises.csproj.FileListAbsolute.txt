@@ -9,3 +9,5 @@ C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csh
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp-exercises.csproj.GenerateResource.cache
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises._04_CalculatorApp.CalculatorMainForm.resources
 C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises._05_MyContacts.MyContactsMainForm.resources
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises._05_MyContacts.frmAddOrEdit.resources
+C:\Users\mo_heydari\source\repos\csharp-exercises\csharp-exercises\obj\Debug\csharp_exercises.Properties.Resources.resources

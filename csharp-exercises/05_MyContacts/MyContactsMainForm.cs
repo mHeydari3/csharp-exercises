@@ -30,5 +30,22 @@ namespace csharp_exercises._05_MyContacts
             dgContacts.AutoGenerateColumns = false;
             dgContacts.DataSource = repository.SelectAll();
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
+
+
+        private void btnNewContact_Click(object sender, EventArgs e)
+        {
+            frmAddOrEdit frm = new frmAddOrEdit();
+            frm.ShowDialog();
+            if(frm.DialogResult == DialogResult.OK)
+            {
+                BindGrid();
+            }
+        }
     }
 }

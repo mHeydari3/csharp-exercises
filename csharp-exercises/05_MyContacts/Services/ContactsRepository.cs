@@ -20,7 +20,38 @@ namespace csharp_exercises._05_MyContacts.Services
 
         public bool Insert(string name, string family, string mobile, string email, int age, string address)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                string query = "Insert Into MyContacts(Name,Family,Email,Age,Mobile,Address) values (@Name, @Family, @Email, @Age , @Mobile , @Address)";
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+
+                sqlCommand.Parameters.AddWithValue("@Name", name);
+                sqlCommand.Parameters.AddWithValue("@Family" , family);
+                sqlCommand.Parameters.AddWithValue("@Mobile", mobile);
+                sqlCommand.Parameters.AddWithValue("@Email", email);
+                sqlCommand.Parameters.AddWithValue("@Age", age);
+                sqlCommand.Parameters.AddWithValue("@Address", address);
+
+                connection.Open();
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+
+
+
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public DataTable SelectAll()

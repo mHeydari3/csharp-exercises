@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyContactsMainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNewContact = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgContacts = new System.Windows.Forms.DataGridView();
@@ -38,17 +42,49 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNewContact,
+            this.toolStripSeparator1,
+            this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(784, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnNewContact
+            // 
+            this.btnNewContact.Image = ((System.Drawing.Image)(resources.GetObject("btnNewContact.Image")));
+            this.btnNewContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNewContact.Name = "btnNewContact";
+            this.btnNewContact.Size = new System.Drawing.Size(122, 22);
+            this.btnNewContact.Text = "افزودن شخص جدید";
+            this.btnNewContact.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnNewContact.Click += new System.EventHandler(this.btnNewContact_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(76, 22);
+            this.btnRefresh.Text = "بروزرسانی";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // groupBox1
             // 
@@ -142,8 +178,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MyContactsMainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "دفترچه تلفن من ";
             this.Load += new System.EventHandler(this.MyContactsMainForm_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).EndInit();
             this.ResumeLayout(false);
@@ -163,5 +202,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripButton btnNewContact;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

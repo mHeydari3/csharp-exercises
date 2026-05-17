@@ -66,6 +66,12 @@
       <DependentUpon>CalculatorMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="04_CalculatorApp\ICalculate.cs" />
+    <Compile Include="05_MyContacts\frmAddOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="05_MyContacts\frmAddOrEdit.Designer.cs">
+      <DependentUpon>frmAddOrEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="05_MyContacts\MyContactsMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,11 @@
     <Compile Include="05_MyContacts\Services\ContactsRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,8 +98,15 @@
     <EmbeddedResource Include="04_CalculatorApp\CalculatorMainForm.resx">
       <DependentUpon>CalculatorMainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="05_MyContacts\frmAddOrEdit.resx">
+      <DependentUpon>frmAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="05_MyContacts\MyContactsMainForm.resx">
       <DependentUpon>MyContactsMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
