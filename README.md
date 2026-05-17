@@ -1,4 +1,3 @@
-```markdown
 # C# Exercises - Learning Journey 🚀
 
 A collection of C# console and Windows Forms applications built while learning .NET development.
@@ -67,7 +66,6 @@ csharp-exercises/
 ├── App.config                # Configuration (Connection Strings if needed)
 ├── csharp-exercises.csproj
 └── csharp-exercises.sln
-```
 
 > ⚠️ **Note:** The `bin/` and `obj/` folders contain build artifacts and are excluded from version control via `.gitignore`.
 
