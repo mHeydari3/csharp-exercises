@@ -14,7 +14,7 @@ namespace csharp_exercises._05_MyContacts
     public partial class frmAddOrEdit : Form
     {
         IContactsRepository repository;
-        
+        public int contactId = 0;
         public frmAddOrEdit()
         {
             InitializeComponent();
@@ -70,31 +70,78 @@ namespace csharp_exercises._05_MyContacts
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            bool isEditMode = false;
+            if (contactId != 0)
+            {
+                isEditMode = true;
+            }
+
             if (ValidateInputs())
             {
-                bool isSuccess = repository.Insert(txtName.Text , txtFamily.Text , txtMobile.Text , txtEmail.Text , (int)txtAge.Value, txtAddress.Text);
-                if (isSuccess == true)
+                if (isEditMode == true)
                 {
-                    string msgBoxTitle = "اطلاع";
-                    string msgText = "عملیات با موفقیت صورت پذیرفت!";
-                    MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                    DialogResult = DialogResult.OK;
+                    bool isSuccess = repository.Update(contactId, txtName.Text, txtFamily.Text, txtMobile.Text, txtEmail.Text, (int)txtAge.Value, txtAddress.Text);
+                    if (isSuccess == true)
+                    {
+                        string FullName = txtName.Text.ToString() + " " + txtFamily.Text.ToString();
+                        string msgBoxTitle = "اطلاع";
+                        string msgText = $"عملیات ویرایش شخص " +
+                            $">{FullName}<" +
+                            $"  در دفتر تلفن با موفقیت صورت پذیرفت!";
+                        MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                        DialogResult = DialogResult.OK;
 
 
+                    }
+                    else
+                    {
+                        string msgBoxTitle = "هشدار";
+                        string msgText = "عملیات ویرایش شخص در دفتر تلفن با شکست مواجه شد.";
+                        MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                    }
                 }
                 else
                 {
-                    string msgBoxTitle = "هشدار";
-                    string msgText = "عملیات با شکست مواجه شد.";
-                    MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                    bool isSuccess = repository.Insert(txtName.Text, txtFamily.Text, txtMobile.Text, txtEmail.Text, (int)txtAge.Value, txtAddress.Text);
+                    if (isSuccess == true)
+                    {
+                        string msgBoxTitle = "اطلاع";
+                        string msgText = "عملیات افزودن شخص جدید به دفتر تلفن با موفقیت صورت پذیرفت!";
+                        MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                        DialogResult = DialogResult.OK;
+
+
+                    }
+                    else
+                    {
+                        string msgBoxTitle = "هشدار";
+                        string msgText = "عملیات افزودن شخص جدید به دفتر تلفن با شکست مواجه شد.";
+                        MessageBox.Show(msgText, msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                    }
+
                 }
             }
         }
 
         private void frmAddOrEdit_Load(object sender, EventArgs e)
         {
-            this.Text = "افزودن شخص جدید";
-            lblFormTitle.Text = "عملیات افزودن شخص جدید";
+            if (contactId == 0)
+            {
+                this.Text = "افزودن شخص جدید";
+                lblFormTitle.Text = "عملیات افزودن شخص جدید";
+            }
+            else
+            {
+                this.Text = "ویرایش شخص از لیست";
+                lblFormTitle.Text = "عملیات ویرایش شخص از لیست";
+                DataTable dt = repository.SelectRow(contactId);
+                txtName.Text = dt.Rows[0][1].ToString();
+                txtFamily.Text = dt.Rows[0][2].ToString();
+                txtMobile.Text = dt.Rows[0][3].ToString();
+                txtEmail.Text = dt.Rows[0][4].ToString();
+                txtAge.Text = dt.Rows[0][5].ToString();
+                txtAddress.Text = dt.Rows[0][6].ToString();
+            }
         }
     }
 }

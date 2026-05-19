@@ -180,7 +180,7 @@
             this.lblFormTitle.AutoSize = true;
             this.lblFormTitle.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFormTitle.ForeColor = System.Drawing.Color.Green;
-            this.lblFormTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblFormTitle.Location = new System.Drawing.Point(21, 9);
             this.lblFormTitle.Name = "lblFormTitle";
             this.lblFormTitle.Size = new System.Drawing.Size(0, 19);
             this.lblFormTitle.TabIndex = 8;
