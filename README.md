@@ -9,7 +9,7 @@ This repository documents my progress in mastering C# fundamentals, OOP principl
 
 ## 📋 Overview
 
-This repository contains hands-on exercises I'm building as I learn C# and .NET Framework. Each project focuses on specific concepts, progressing from basic syntax to object-oriented design, graphical user interfaces, and **data-driven applications with full CRUD operations**.
+This repository contains hands-on exercises I'm building as I learn C# and .NET Framework. Each project focuses on specific concepts, progressing from basic syntax to object-oriented design, graphical user interfaces, and **fully-featured data-driven applications with complete CRUD + Search operations**.
 
 | # | Project | Type | Key Concepts |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ This repository contains hands-on exercises I'm building as I learn C# and .NET 
 | 02 | 🏦 BankAccount | Console | Classes, Properties, Constructors, Static Members, Exceptions |
 | 03 | 👋 HelloWorld | Windows Forms | Form Design, Event Handling, UI Controls |
 | 04 | 🧮 CalculatorApp | Windows Forms | Interfaces, Separation of Concerns, Interactive UI |
-| 05 | 📇 MyContacts | WinForms + SQL | ADO.NET, SQL Server, Repository Pattern, DataGridView, **CRUD Operations, ToolStrip, Modal Dialogs** |
+| 05 | 📇 MyContacts | WinForms + SQL | ADO.NET, SQL Server, Repository Pattern, DataGridView, **Full CRUD + Real-time Search, ToolStrip, Modal Dialogs, Dual-Purpose Forms** |
 
 ## 🛠 Technologies Used
 
@@ -25,7 +25,7 @@ This repository contains hands-on exercises I'm building as I learn C# and .NET 
 *   **Framework:** .NET Framework 4.6
 *   **UI Framework:** Windows Forms
 *   **Database:** Microsoft SQL Server (LocalDB/Express)
-*   **Data Access:** ADO.NET (`SqlConnection`, `SqlCommand`, `SqlDataAdapter`, `DataTable`, **Parameterized Queries**)
+*   **Data Access:** ADO.NET (`SqlConnection`, `SqlCommand`, `SqlDataAdapter`, `DataTable`, **Parameterized Queries**, **LIKE Operator**)
 *   **IDE:** Visual Studio 2017+
 *   **Tools:** SQL Server Management Studio (SSMS)
 
@@ -48,25 +48,26 @@ csharp-exercises/
 │   ├── Calculate.cs          # Interface implementation
 │   ├── CalculatorMainForm.cs # Main form & UI logic
 │   └── CalculatorMainForm.Designer.cs
-├── 05_MyContacts/            # Contact Management System (DB-Connected)
+├── 05_MyContacts/            # Contact Management System (DB-Connected) ✅ FULL CRUD + SEARCH
 │   ├── Repository/
-│   │   └── IContactsRepository.cs  # Interface for data access (CRUD contract)
+│   │   └── IContactsRepository.cs  # Interface for data access (CRUD + Search contract)
 │   ├── Services/
-│   │   └── ContactsRepository.cs   # ADO.NET Implementation with Parameterized Queries
-│   ├── frmAddOrEdit.cs             # 🆕 Modal form for Add/Edit operations
+│   │   └── ContactsRepository.cs   # ADO.NET Implementation with Parameterized Queries (INSERT/UPDATE/DELETE/SEARCH)
+│   ├── frmAddOrEdit.cs             # 🔄 Dual-purpose modal form: Add NEW or Edit EXISTING contact
 │   ├── frmAddOrEdit.Designer.cs
 │   ├── frmAddOrEdit.resx
-│   ├── MyContactsMainForm.cs       # Main UI with ToolStrip & DataGridView
+│   ├── MyContactsMainForm.cs       # Main UI with ToolStrip, DataGridView, Search Box, Edit/Delete buttons
 │   ├── MyContactsMainForm.Designer.cs
 │   └── MyContactsMainForm.resx
 ├── Properties/
 │   ├── AssemblyInfo.cs
-│   ├── Resources.Designer.cs  # 🆕 Auto-generated resource accessor
-│   └── Resources.resx         # 🆕 Embedded ToolStrip icons (Base64)
+│   ├── Resources.Designer.cs  # Auto-generated resource accessor
+│   └── Resources.resx         # Embedded ToolStrip icons (Base64)
 ├── App.config                # Configuration (Connection Strings if needed)
 ├── csharp-exercises.csproj
 └── csharp-exercises.sln
 ```
+
 > ⚠️ **Note:** The `bin/` and `obj/` folders contain build artifacts and are excluded from version control via `.gitignore`.
 
 ## ▶️ How to Run
@@ -133,31 +134,47 @@ csharp-exercises/
 *   Input validation before performing calculations.
 *   Displaying results using `MessageBox`.
 
-### 05 - MyContacts (WinForms + ADO.NET) 🔄 Updated
+### 05 - MyContacts (WinForms + ADO.NET) ✅ Full CRUD + Search
 
-#### ✅ Core Features Implemented:
-*   **Database Integration:** Connecting C# applications to **SQL Server** using **ADO.NET**.
-*   **Disconnected Architecture:** Using `SqlDataAdapter` and `DataTable` to fetch data efficiently.
-*   **Repository Pattern:** Implementing `IContactsRepository` to separate data access logic from UI code.
-*   **Data Binding:** Binding `DataTable` sources to `DataGridView` controls for dynamic data display.
-*   **SQL Management:** Using **SSMS** for database creation and table design.
-*   **Connection Strings:** Managing secure connections with `Integrated Security`.
+#### ✅ Core Architecture:
+*   **Repository Pattern:** `IContactsRepository` interface for loose coupling and testability.
+*   **Disconnected Data Access:** `SqlDataAdapter` + `DataTable` for efficient data fetching.
+*   **Data Binding:** Dynamic `DataGridView` population with `AutoGenerateColumns = false`.
 
-#### 🆕 New Features (Episode 20):
-*   **ToolStrip Component:** Adding a professional toolbar with `ToolStripButton`, icons, and `TextImageRelation` for RTL support.
-*   **Modal Dialog Pattern:** Implementing `frmAddOrEdit` with `ShowDialog()` and `DialogResult` for parent-child form communication.
-*   **Client-Side Validation:** Building `ValidateInputs()` method with **Guard Clauses** and `MessageBoxOptions.RtlReading` for Persian UI.
-*   **Parameterized Queries:** Implementing secure `INSERT` operation using `SqlCommand.Parameters.AddWithValue()` to prevent **SQL Injection**.
-*   **Resource Management:** Embedding icons in `Properties/Resources.resx` as Base64-encoded `Bitmap` objects.
-*   **Form Configuration:** Setting `FormBorderStyle = FixedToolWindow`, `StartPosition = CenterParent`, and `RightToLeftLayout = true` for Persian UX.
+#### ✅ CRUD Operations Implemented:
+| Operation | Method | Security | Description |
+|-----------|--------|----------|-------------|
+| 🔹 **Create** | `Insert()` | ✅ Parameterized | Add new contact with validation |
+| 🔹 **Read** | `SelectAll()` | ✅ Safe | Load all contacts into grid |
+| 🔹 **Read One** | `SelectRow(id)` | ⚠️ **Fix Needed** | Load single contact for edit *(uses string concatenation - see Technical Debt)* |
+| 🔹 **Update** | `Update()` | ✅ Parameterized | Edit existing contact with full field binding |
+| 🔹 **Delete** | `Delete()` | ✅ Parameterized | Remove contact with confirmation dialog |
+| 🔹 **Search** | `Search(keyword)` | ✅ Parameterized | Real-time fuzzy search on Name/Family with `LIKE %keyword%` |
+
+#### ✅ UI/UX Features:
+*   **ToolStrip Toolbar:** Professional action buttons with icons (`btnNewContact`, `btnRefresh`).
+*   **Dual-Purpose Modal Form:** `frmAddOrEdit` handles both Add and Edit via `contactId` state flag.
+*   **Real-time Search:** `txtSearch_TextChanged` event triggers instant filtering without full reload.
+*   **Confirmation Dialogs:** User-friendly `MessageBox` with RTL support for Delete operations.
+*   **Row Selection Handling:** `CurrentRow` checks prevent null-reference errors.
+*   **Primary Key Hiding:** `ContactID` column hidden from end-user view for cleaner UI.
 
 #### 🔐 Security Best Practices Applied:
 ```csharp
-// ✅ Parameterized Query - Prevents SQL Injection
+// ✅ Parameterized INSERT - Prevents SQL Injection
 string query = "INSERT INTO MyContacts (...) VALUES (@Name, @Family, ...)";
 sqlCommand.Parameters.AddWithValue("@Name", name);
 
-// ✅ Resource Management - Prevents Connection Leaks
+// ✅ Parameterized UPDATE - All fields bound safely
+sqlCommand.Parameters.AddWithValue("@ContactId", contactId); // Critical for WHERE clause
+
+// ✅ Parameterized DELETE - Safe record removal
+command.Parameters.AddWithValue("@ID", contactId);
+
+// ✅ Parameterized SEARCH - LIKE with wildcards, no concatenation
+adapter.SelectCommand.Parameters.AddWithValue("@parameter", "%" + keyword + "%");
+
+// ✅ Resource Management - using statements prevent connection leaks
 using (SqlConnection connection = new SqlConnection(connectionString))
 {
     using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -166,6 +183,27 @@ using (SqlConnection connection = new SqlConnection(connectionString))
         cmd.ExecuteNonQuery();
     } // Auto-dispose
 } // Auto-close & dispose
+```
+
+#### 🔄 Dual-Purpose Form Pattern (`frmAddOrEdit`):
+```csharp
+// State flag determines operation mode
+public int contactId = 0;  // 0 = Add Mode, >0 = Edit Mode
+
+// Conditional logic in btnSubmit_Click
+bool isEditMode = (contactId != 0);
+if (isEditMode) {
+    repository.Update(contactId, ...);  // Edit existing
+} else {
+    repository.Insert(...);             // Add new
+}
+
+// Auto pre-fill in Load event for Edit mode
+if (contactId != 0) {
+    DataTable dt = repository.SelectRow(contactId);
+    txtName.Text = dt.Rows[0]["Name"].ToString();  // Populate fields
+    // ... other fields
+}
 ```
 
 ## 📈 Learning Progress
@@ -179,30 +217,39 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 *   ✅ ADO.NET & SQL Server Integration
 *   ✅ Repository Design Pattern
 *   ✅ DataGridView & Data Binding
-*   ✅ **ToolStrip Component & Resource Management**
-*   ✅ **Modal Dialog Pattern & DialogResult Communication**
-*   ✅ **Client-Side Input Validation**
-*   ✅ **Parameterized Queries & SQL Injection Prevention**
-*   ✅ **CRUD - Create Operation (Insert)**
+*   ✅ ToolStrip Component & Resource Management
+*   ✅ Modal Dialog Pattern & DialogResult Communication
+*   ✅ Client-Side Input Validation with Guard Clauses
+*   ✅ Parameterized Queries & SQL Injection Prevention (INSERT/UPDATE/DELETE/SEARCH)
+*   ✅ **Full CRUD Operations: Create, Read, Update, Delete**
+*   ✅ **Real-time Search with LIKE Operator**
+*   ✅ **Dual-Purpose Form Pattern (Add/Edit)**
+*   ✅ **Row Selection & State Passing Between Forms**
 
 ## 🔜 Next Goals:
 
-*   ⏳ Implementing **Update** operation for MyContacts (Edit existing contact)
-*   ⏳ Implementing **Delete** operation with confirmation dialog
-*   ⏳ Adding **Regex Validation** for Email and Mobile fields
-*   ⏳ Moving validation logic from UI to **Service Layer** for better Separation of Concerns
-*   ⏳ Implementing **Search/Filter** functionality in DataGridView
-*   ⏳ LINQ and Lambda expressions for in-memory data manipulation
-*   ⏳ Async/Await and asynchronous database programming (`ExecuteNonQueryAsync`)
-*   ⏳ Entity Framework Core (ORM) introduction
-*   ⏳ Unit testing with xUnit/NUnit and Mocking repositories
+### 🟡 Important (Architecture & Maintainability)
+*   ⏳ **Move Validation Logic to Service Layer**: Separate UI validation from business rules for better testability
+*   ⏳ **Implement Structured Error Logging**: Replace `catch { return false; }` with proper logging (`try-catch-log`)
+*   ⏳ **Add Async/Await Support**: Use `ExecuteNonQueryAsync()` for non-blocking database operations
+
+### 🟢 Enhancement (UX & Scalability)
+*   ⏳ **Add Pagination to DataGridView**: Handle large datasets with `LIMIT/OFFSET` or server-side paging
+*   ⏳ **Implement Column Sorting**: Enable user-click sorting on DataGridView headers
+*   ⏳ **Add Export Feature**: Allow exporting contacts to CSV or Excel
+*   ⏳ **Introduce Entity Framework Core**: Migrate from ADO.NET to ORM for cleaner data access code
+
+### 🔵 Future Learning
+*   ⏳ **Unit Testing with xUnit/NUnit**: Write tests for Repository and Service layers with Mocking
+*   ⏳ **Dependency Injection Container**: Use `Microsoft.Extensions.DependencyInjection` for automatic wiring
+*   ⏳ **Multi-language Support**: Implement resource files for Persian/English UI localization
 
 ## 🤝 Contributing & Feedback
 
 This is a personal learning project, but I welcome:
-*   Code review suggestions and best practices.
-*   Bug reports or improvement ideas.
-*   Recommendations for new exercises or topics.
+*   🔍 **Code review suggestions** and security best practices (especially regarding `SelectRow` vulnerability).
+*   🐛 **Bug reports** or improvement ideas for UI/UX flow.
+*   💡 **Recommendations** for new exercises or advanced C# topics.
 
 Feel free to open an [Issue](https://github.com/mHeydari3/csharp-exercises/issues) or reach out via [my GitHub profile](https://github.com/mHeydari3).
 
@@ -213,10 +260,10 @@ This project is for educational purposes and is distributed under the MIT Licens
 **MIT License** - Copyright (c) 2026 Mohammad Heydari
 
 <div align="center">
-<br/>
+
 ✨ Learning in public, growing together ✨
-<br/>
-<a href="https://github.com/mHeydari3/csharp-exercises">🔗 View Repository on GitHub </a>
-<br/>
+
+[🔗 View Repository on GitHub](https://github.com/mHeydari3/csharp-exercises)
+
 </div>
 
